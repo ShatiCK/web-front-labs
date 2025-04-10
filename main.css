@@ -24,3 +24,13 @@ a:active {
     opacity: 0.3;
     transition: 0.3s;
 }
+div.menu {
+    border: 1px solid;
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+}
+div.menu:hover {
+    background-color: blueviolet;
+    box-shadow: 10px 10px 15px #00000030;
+}
