@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Шатравский Никита Дмитриевич. Лабораторная 3</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f5f5f5;
+                margin: 0;
+                padding: 0;
+            }
+        
+            header, footer {
+                background-color: #333;
+                color: white;
+                text-align: center;
+                padding: 1em;
+            }
+        
+            main {
+                padding: 2em;
+                display: flex;
+                flex-direction: column;
+                gap: 1.5em;
+                align-items: center;
+            }
+        
+            .text-block {
+                width: 60%;
+                background-color: #ffffff;
+                color: #222;
+                border: 2px solid #ccc;
+                box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+                padding: 30px 80px;
+                border-radius: 10px;
+                transition: all 0.5s ease;
+                cursor: default;
+                overflow: hidden;
+                height: auto;
+            }
+        
+            .text-block h2 {
+                margin: 0;
+                cursor: pointer;
+            }
+        
+            .text-block p {
+                display: none;
+                margin-top: 1em;
+            }
+        
+            .text-block:hover {
+                color: #fff;
+                background-color: #6a5acd;
+                box-shadow: 4px 4px 20px rgba(0,0,0,0.3);
+                border-radius: 20px;
+                transition: all 0.5s ease;
+                padding: 30px;
+            }
+        
+            .text-block:hover p {
+                display: block;
+            }
+        
+            .text-block:not(:hover) {
+                transition-delay: 2s;
+            }
+        </style>
+        
+    </head>
+
+    <body>
+        <header>
+            <h1>Классическая литература</h1>
+        </header>
+
+        <main>
+            <div class="text-block">
+            <h2>Преступление и наказание — Ф. М. Достоевский</h2>
+            <p>
+                Но ведь... если бы тогда, на первом шагу, меня поймали, что бы вышло? Тогда был бы взят, и ничего более. 
+                Мучения бы не было... А вот теперь?..
+            </p>
+            </div>
+
+            <div class="text-block">
+            <h2>Война и мир — Л. Н. Толстой</h2>
+            <p>
+                Человеку дано ощущение движения времени, чтобы он мог чувствовать своё существование.
+            </p>
+            </div>
+
+            <div class="text-block">
+            <h2>Евгений Онегин — А. С. Пушкин</h2>
+            <p>
+                Онегин, добрый мой приятель, родился на брегах Невы...
+            </p>
+            </div>
+
+            <div class="text-block">
+            <h2>Мастер и Маргарита — М. А. Булгаков</h2>
+            <p>
+                Рукописи не горят.
+            </p>
+            </div>
+
+            <div class="text-block">
+            <h2>Герой нашего времени — М. Ю. Лермонтов</h2>
+            <p>
+                Печорин — портрет, составленный из пороков всего нашего поколения.
+            </p>
+            </div>
+        </main>
+
+        <footer>
+            &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
+        </footer>
+    </body>
+</html>
