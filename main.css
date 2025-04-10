@@ -34,3 +34,14 @@ div.menu:hover {
     background-color: blueviolet;
     box-shadow: 10px 10px 15px #00000030;
 }
+footer {
+    background-color: black;
+    color: lightgreen;
+    padding: 10px;
+    font-size: 16px;
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
