@@ -1,7 +1,24 @@
-body 
-{
+body {
     background-color: lightblue;
     color: maroon;
     font-family: arial;
     margin: 0px;
+}
+a {
+    color: green;
+    text-decoration: none;
+}
+a:link {
+    color: black;
+}
+a:visited {
+    color: gold;
+}
+a:hover {
+    color: red;
+    text-decoration: underline;
+}
+a:active {
+    color: black;
+    opacity: 0.3;
 }
