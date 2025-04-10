@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Шатравский Никита Дмитриевич. Лабораторная 3</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer {
+            background-color: #1f1f1f;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .discount {
+            width: 320px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .discount h1 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .discount div {
+            display: none;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .discount h1:hover + div {
+            display: block;
+        }
+
+        .info-block {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .component {
+            width: 350px;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .processor {
+            background: linear-gradient(to right, #8e44ad, #6c3483);
+        }
+
+        .oper {
+            background: linear-gradient(to right, #2e86c1, #21618c);
+        }
+
+        .screen {
+            background: linear-gradient(to right, #239b56, #1d8348);
+        }
+
+        .component h1 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .component div {
+            font-size: 15px;
+        }
+
+        h1.main-title {
+            margin-top: 40px;
+            font-size: 26px;
+            color: #1f1f1f;
+        }
+    </style>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 3</header>
+    
+    <main>
+        <div class="discount">
+            <h1>Дисконт в теории игр.</h1>
+            <div>
+                В теории игр дисконт отражает ценность будущих выигрышей с учётом вероятности продолжения игры.
+            </div>    
+        </div>
+        <div class="discount">
+            <h1>Залоговый дисконт.</h1>
+            <div>
+                Разница между рыночной и залоговой стоимостью имущества при выдаче кредита.
+            </div>
+        </div>
+
+        <h1 class="main-title">ASUS ROG Zephyrus G14 (2024)</h1>
+        <div class="info-block">
+            <div class="component processor">
+                <h1>Процессор</h1>
+                <div>
+                    AMD Ryzen 9 8945HS — 8 ядер и 16 потоков, высокая частота до 5.2 ГГц. Отлично подходит для игр и работы с графикой.
+                </div>
+            </div>
+            <div class="component oper">
+                <h1>Оперативная память</h1>
+                <div>
+                    32 ГБ DDR5-5600 МГц обеспечивают молниеносную загрузку и комфортную многозадачность без тормозов.
+                </div>
+            </div>
+            <div class="component screen">
+                <h1>Экран</h1>
+                <div>
+                    14-дюймовый OLED-дисплей с разрешением 2880×1800, частотой 120 Гц и яркостью 500 нит. Картинка — как живая.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
+    </footer>
+</body>
+</html>
