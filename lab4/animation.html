@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Горшков Андрей Максимович. Облако тегов</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="icon" href="../dog.jpg">
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                font-family: Arial, sans-serif;
+                overflow: hidden;
+                position: relative;
+            }
+            .tag {
+                position: absolute;
+                font-weight: bold;
+                cursor: pointer;
+                transition: transform 0.3s, text-shadow 0.3s;
+                z-index: 0;
+                animation-duration: 10s;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+                animation-direction: alternate;
+            }
+            .tag:hover {
+                transform: scale(2);
+                text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+                z-index: 10;
+                animation-play-state: paused;
+            }
+            .t1  { font-size: 18px; color: #000; animation-name: move1; }
+            .t2  { font-size: 26px; color: #0057e7; animation-name: move2; }
+            .t3  { font-size: 22px; color: #e60026; animation-name: move3; }
+            .t4  { font-size: 30px; color: #ffcc00; animation-name: move4; }
+            .t5  { font-size: 20px; color: #0077be; animation-name: move5; }
+            .t6  { font-size: 24px; color: #00cc00; animation-name: move6; }
+            .t7  { font-size: 19px; color: #444; animation-name: move7; }
+            .t8  { font-size: 21px; color: #d63384; animation-name: move8; }
+            .t9  { font-size: 23px; color: #800000; animation-name: move9; }
+            .t10 { font-size: 20px; color: #660000; animation-name: move10; }
+            .t11 { font-size: 25px; color: #9933cc; animation-name: move11; }
+            .t12 { font-size: 28px; color: #f2a900; animation-name: move12; }
+            .t13 { font-size: 19px; color: #cc0000; animation-name: move13; }
+            .t14 { font-size: 22px; color: #ff6600; animation-name: move14; }
+            .t15 { font-size: 24px; color: #3366cc; animation-name: move15; }
+
+            @keyframes move1  { 0% { top:10%; left:15%; } 100% { top:25%; left:30%; } }
+            @keyframes move2  { 0% { top:20%; left:40%; } 100% { top:35%; left:60%; } }
+            @keyframes move3  { 0% { top:30%; left:50%; } 100% { top:45%; left:70%; } }
+            @keyframes move4  { 0% { top:40%; left:65%; } 100% { top:55%; left:50%; } }
+            @keyframes move5  { 0% { top:50%; left:30%; } 100% { top:65%; left:40%; } }
+            @keyframes move6  { 0% { top:60%; left:45%; } 100% { top:75%; left:55%; } }
+            @keyframes move7  { 0% { top:70%; left:60%; } 100% { top:55%; left:80%; } }
+            @keyframes move8  { 0% { top:28%; left:55%; } 100% { top:42%; left:75%; } }
+            @keyframes move9  { 0% { top:33%; left:25%; } 100% { top:50%; left:15%; } }
+            @keyframes move10 { 0% { top:38%; left:40%; } 100% { top:53%; left:45%; } }
+            @keyframes move11 { 0% { top:43%; left:55%; } 100% { top:60%; left:70%; } }
+            @keyframes move12 { 0% { top:48%; left:70%; } 100% { top:62%; left:85%; } }
+            @keyframes move13 { 0% { top:53%; left:35%; } 100% { top:66%; left:20%; } }
+            @keyframes move14 { 0% { top:58%; left:50%; } 100% { top:75%; left:65%; } }
+            @keyframes move15 { 0% { top:63%; left:65%; } 100% { top:78%; left:50%; } }              
+        </style>
+    </head>
+    <body>
+        <header>НГТУ, ФБ, Лабораторная работа 4</header>
+        
+        <main>
+            <div class="tag-cloud">
+                <div class="tag t1">Геральт</div>
+                <div class="tag t2">Весемир</div>
+                <div class="tag t3">Лютик</div>
+                <div class="tag t4">Эскель</div>
+                <div class="tag t5">Ламберт</div>
+                <div class="tag t6">Койон</div>
+                <div class="tag t7">Эмиель</div>
+                <div class="tag t8">Мильва</div>
+                <div class="tag t9">Кагыр Маур Дыффин аэп Кеаллах</div>
+                <div class="tag t10">Ангулема</div>
+                <div class="tag t11">Гиселер</div>
+                <div class="tag t12">Искра</div>
+                <div class="tag t13">Кайлей</div>
+                <div class="tag t14">Рееф</div>
+                <div class="tag t15">Цирилла</div>
+            </div>
+        </main>
+
+        <footer>
+            &copy; Андрей Горшков, ФБИ-33, 2 курс, 2025
+        </footer>
+    </body>
+</html>
