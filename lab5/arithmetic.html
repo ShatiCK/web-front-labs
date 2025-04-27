@@ -40,6 +40,71 @@
                 let result = a * b;
                 alert ('Произведение ' + a + ' и ' + b + ' равно ' + result);
             }
+            function showDiv() {
+                let inputA=document.getElementById('numberA');
+                let inputB=document.getElementById('numberB');
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                if (b==0) {
+                    alert('На ноль делить нельзя!');
+                    inputB.focus();
+                    inputB.select();
+                    inputB.style.color = 'black';
+                    inputB.style.backgroundColor = 'red';
+                    return;
+                }
+                if (isNaN(a)) {
+                    alert('Введите числовое значение в первое поле');
+                    inputA.style.color = 'black';
+                    inputA.style.backgroundColor = 'red';
+                    return;
+                }
+                if (isNaN(b)) {
+                    alert('Введите числовое значение во второе поле');
+                    inputB.style.color = 'black';
+                    inputB.style.backgroundColor = 'red';
+                    return;
+                }
+                inputA.style.color = '';
+                inputA.style.backgroundColor = '';
+                inputB.style.color = '';
+                inputB.style.backgroundColor = '';
+                let result = a/b;
+                alert (a + ' / ' + b + ' = ' + result);
+            }
+            function step() {
+                let inputA=document.getElementById('numberA');
+                let inputB=document.getElementById('numberB');
+
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                if (a==0 && b==0) {
+                    alert('Значения не должны быть равны нулю');
+                    inputA.style.color = 'black';
+                    inputA.style.backgroundColor = 'red';
+                    inputB.style.color = 'black';
+                    inputB.style.backgroundColor = 'red';
+                    return;    
+                }
+                if (isNaN(a)) {
+                    alert('В поле есть нечисловое значение');
+                    inputA.style.color = 'black';
+                    inputA.style.backgroundColor = 'red';
+                    return;    
+                }
+                if (isNaN(b)) {
+                    alert('В поле есть нечисловое значение');
+                    inputB.style.color = 'black';
+                    inputB.style.backgroundColor = 'red';
+                    return;    
+                }
+                inputA.style.color = '';
+                inputA.style.backgroundColor = '';
+                inputB.style.color = '';
+                inputB.style.backgroundColor = '';   
+                let result = a**b;
+                alert (a+' в степени '+ b +' равно ' + result);
+            }
         </script>
         <style>
             .message {
@@ -65,8 +130,10 @@
             <div class="message" style="margin-left: 10px;" onclick="showSum()">Найти сумму чисел</div>
             <div class="message" style="margin-left: 5px;" onclick="razn()">Найти разность</div>
             <div class="message" style="margin-left: 5px;" onclick="proiz()">Найти произведение</div>
+            <div class="message" style="margin-left: 5px;" onclick="showDiv()">Найти отношение чисел</div>
+            <div class="message" style="margin-left: 5px;" onclick="step()">Возведение в степень</div>
             <div class="message" style="margin-left: 5px;" onclick = "showAuthor()">Узнать, кто автор сраницы</div>
-                    </main>
+        </main>
 
         <footer style="cursor: pointer;" ondblclick="HI()">
             &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
