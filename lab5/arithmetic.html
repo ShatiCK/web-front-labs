@@ -23,6 +23,23 @@
                 let hi = 'Приветствую вас на странице Шатравского Никиты.\nСлава России';
                 alert(hi);
             }
+            function razn() {
+                let inputA=document.getElementById('numberA');
+                let inputB=document.getElementById('numberB');
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                let result = a - b;
+                alert ('Разность ' + a + ' и ' + b + ' равна ' + result);
+            }
+            function proiz() {
+                let inputA=document.getElementById('numberA');
+                let inputB=document.getElementById('numberB');
+
+                let a = parseInt(inputA.value);
+                let b = parseInt(inputB.value);
+                let result = a * b;
+                alert ('Произведение ' + a + ' и ' + b + ' равно ' + result);
+            }
         </script>
         <style>
             .message {
@@ -46,8 +63,10 @@
             <label>Первое число: <input type="number" value="5154" id="numberA"></label><br>
             <label>Второе число: <input type="number" value="7891" id="numberB"></label><br>
             <div class="message" style="margin-left: 10px;" onclick="showSum()">Найти сумму чисел</div>
-            <div class="message" onclick = "showAuthor()">Узнать, кто автор сраницы</div>
-        </main>
+            <div class="message" style="margin-left: 5px;" onclick="razn()">Найти разность</div>
+            <div class="message" style="margin-left: 5px;" onclick="proiz()">Найти произведение</div>
+            <div class="message" style="margin-left: 5px;" onclick = "showAuthor()">Узнать, кто автор сраницы</div>
+                    </main>
 
         <footer style="cursor: pointer;" ondblclick="HI()">
             &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
