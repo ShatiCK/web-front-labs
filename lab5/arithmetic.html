@@ -13,6 +13,14 @@
                 let result = a + b;
                 alert (' Сумма ' + a + ' и ' + b + ' равна ' + result);
             }
+            function showAuthor(){
+                let author = 'Автор страницы:\nШатравский Никита Дмитриевич';
+                alert(author);
+            }
+            function HI() {
+                let hi = 'Приветствую вас на странице Шатравского Никиты.\nСлава России';
+                alert(hi);
+            }
         </script>
         <style>
             .message {
@@ -28,16 +36,16 @@
         </style>
     </head>
     <body>
-        <header onclick="showAutor()">
+        <header style="cursor: pointer;" onclick="showAuthor()">
             НГТУ, ФБ, Лабораторная работа 5
         </header>
         
         <main>
             <div class="message" onclick = "showSum()">Сколько будет 5154+7891?</div>
-            <div class="message">Узнать, кто автор сраницы</div>
+            <div class="message" onclick = "showAuthor()">Узнать, кто автор сраницы</div>
         </main>
 
-        <footer>
+        <footer style="cursor: pointer;" ondblclick="HI()">
             &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
         </footer>
     </body>
