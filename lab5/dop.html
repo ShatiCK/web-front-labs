@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Шатравский Никита Дмитриевич. Дополнительное задание</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        body {
+        font-family: sans-serif;
+        padding: 20px;
+        }
+        img {
+        max-width: 100%;
+        transition: filter 0.1s ease;
+        display: block;
+        margin-bottom: 10px;
+        }
+        #info {
+        margin-top: 10px;
+        font-weight: bold;
+        }
+        #help {
+        margin-top: 20px;
+        font-size: 0.9em;
+        color: #555;
+        background: #f9f9f9;
+        padding: 10px;
+        border-left: 4px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h2>Наведи мышь на картинку</h2>
+    <img id="image" src="sekiro.jpg">
+    <div id="info">Фильтр: blur(0px)</div>
+
+    <div id="help">
+        <p>Наведите мышь на изображение — эффект <strong>blur</strong> будет усиливаться по мере приближения курсора к правому краю.</p>
+        <p>Дополнительные фильтры:</p>
+        <ul>
+        <li><strong>Ctrl</strong> — grayscale</li>
+        <li><strong>Alt</strong> — hue-rotate</li>
+        <li><strong>Shift</strong> — sepia</li>
+        </ul>
+    </div>
+
+    <script>
+        const img = document.getElementById('image');
+        const info = document.getElementById('info');
+
+        const maxBlur = 10; 
+        const maxGrayscale = 1;
+        const maxHue = 360;
+        const maxSepia = 1;
+
+        img.addEventListener('mousemove', (e) => {
+        const rect = img.getBoundingClientRect();
+        const relativeX = (e.clientX - rect.left) / rect.width;
+        const blur = (relativeX * maxBlur).toFixed(2);
+
+        
+        const grayscale = e.ctrlKey ? (relativeX * maxGrayscale).toFixed(2) : 0;
+        const hue = e.altKey ? (relativeX * maxHue).toFixed(0) : 0;
+        const sepia = e.shiftKey ? (relativeX * maxSepia).toFixed(2) : 0;
+
+        const filter = `
+            blur(${blur}px)
+            grayscale(${grayscale})
+            hue-rotate(${hue}deg)
+            sepia(${sepia})
+        `;
+
+        img.style.filter = filter;
+        info.textContent = `Фильтр: blur(${blur}px), grayscale(${grayscale}), hue-rotate(${hue}deg), sepia(${sepia})`;
+        });
+
+        
+        img.addEventListener('mouseleave', () => {
+        img.style.filter = 'none';
+        info.textContent = `Фильтр: нет`;
+        });
+    </script>
+</body>
+</html>
