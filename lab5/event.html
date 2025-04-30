@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Шатравский Никита Дмитриевич. Событие</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            #block {
+                width: 120px;
+                height: 120px;
+                border: 2px dashed #333;
+                background-color: #f0f8ff; 
+                cursor: pointer;
+                white-space: normal;
+                padding: 10px;
+                border-radius: 8px;
+                box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+                font-family: Arial, sans-serif;
+            }
+        </style>
+        <script>
+            function showCoords() {
+                let x = this.event.x;
+                let y = this.event.y;
+                let div = document.getElementById('block');
+                let html = '<b>x</b> = ' + x + 'px<br><b>y</b> = ' + y + 'px';
+                if (this.event.ctrlKey) {
+                    div.style.color = 'red';
+                    html += '<br><b>Нажата клавиша Ctrl</b>';
+                } else {
+                    div.style.color = 'black';
+                }
+
+                if (this.event.altKey) {
+                    div.style.backgroundColor = 'yellow';
+                    div.style.border = '2px solid white';
+                    html += '<br><b>Нажата клавиша Alt</b>';
+                } else {
+                    div.style.backgroundColor = 'lightgreen';
+                    div.style.border = '2px solid black';
+                }
+
+                if (this.event.shiftKey) {
+                    div.style.border = '3px dashed blue';
+                    html += '<br><b>Нажата клавиша Shift</b>';
+                }
+                div.innerHTML = html;
+            }
+        </script>
+    </head>
+    <body>
+        <header>НГТУ, ФБ, Лабораторная работа 5</header>
+        
+        <main>
+            <div id="block" onmousemove="showCoords()"></div>
+        </main>
+
+        <footer>
+            &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
+        </footer>
+    </body>
+</html>
