@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Шатравский Никита Дмитриевич. Корзина</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script>
+            function calculateTotal() {
+                const prices = [100, 40, 80, 600, 120];
+    
+                let total = 0;
+                for (let i = 1; i <= 5; i++) {
+                    let input = document.getElementById("item" + i);
+                    let quantity = parseFloat(input.value) || 0;
+                    total += quantity * prices[i - 1];
+                }
+    
+                document.getElementById("total").innerText = "Сумма к оплате: " + total.toFixed(2) + " руб.";
+            }
+            function clearCart() {
+                for (let i = 1; i <= 5; i++) {
+                    document.getElementById("item" + i).value = '';
+                }
+                document.getElementById("total").innerText = '';
+            }
+        </script>
+        <style>
+            .item {
+                margin-bottom: 10px;
+            }
+            label {
+                display: inline-block;
+                width: 200px;
+            }
+            input[type="number"] {
+                width: 60px;
+            }
+            #total {
+                margin-top: 20px;
+                font-weight: bold;
+                font-size: 18px;
+            }
+            .btn {
+                margin-top: 15px;
+                padding: 8px 16px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            input[type='number'] {
+                width: 150px;
+            }
+        </style>
+</head>
+<body>
+    <header >НГТУ, ФБ, Лабораторная работа 5</header>
+    <main>
+        <div style="border: 1px solid; border-radius: 10px; padding: 20px; max-width: 400px;">
+            <h2>Корзина товаров</h2>
+            <div class="item">
+                <label>Сыр (150 руб):</label>
+                <input type="number" id="item1" min="0" placeholder="Кол-во сыра">
+            </div>
+            <div class="item">
+                <label>Хлеб (40 руб):</label>
+                <input type="number" id="item2" min="0" placeholder="Кол-во хлеба">
+            </div>
+            <div class="item">
+                <label>Молоко (80 руб):</label>
+                <input type="number" id="item3" min="0" placeholder="Кол-во молока">
+            </div>
+            <div class="item">
+                <label>Колбаса (130 руб):</label>
+                <input type="number" id="item4" min="0" placeholder="Кол-во колбасы">
+            </div>
+            <div class="item">
+                <label>Сок (120 руб):</label>
+                <input type="number" id="item5" min="0" placeholder="Кол-во сок">
+            </div>
+            <button class="btn" onclick="calculateTotal()">Рассчитать</button>
+            <button class="btn" onclick="clearCart()">Очистить</button>
+            <div id="total">Сумма к оплате: 0 руб.</div>
+        </div>
+    </main>
+    <footer>
+        &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
+    </footer>
+</body>
+</html>
