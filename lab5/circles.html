@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Шатравский Никита Дмитриевич. Круги</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        const colors = ['gold', 'navy', 'lime', 'coral', 'indigo', 'cyan', 'maroon', 'violet', 'olive', 'salmon'];
+        function getRandomPercent(max) {
+            return Math.floor(Math.random() * max);
+        }
+        function createCircles() {
+            const main = document.querySelector('main');
+            document.querySelectorAll('.circle').forEach(c => c.remove());
+            for (let i = 0; i < 10; i++) {
+                const circle = document.createElement('div');
+                circle.className = 'circle';
+                circle.textContent = i + 1;
+                circle.style.backgroundColor = colors[i];
+                circle.style.left = getRandomPercent(90) + 'vw';
+                circle.style.top = getRandomPercent(75) + 'vh';
+                circle.onclick = function () {
+                    this.classList.add('hidden');
+                };
+                main.appendChild(circle);
+            }
+        }
+        function restoreCircles() {
+            document.querySelectorAll('.circle').forEach(c => c.classList.remove('hidden'));
+        }
+        document.addEventListener('DOMContentLoaded', createCircles);
+    </script>
+    <style>
+        .circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+        .hidden {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            font-size: 0;
+        }
+        #restoreBtn {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 1000;
+            position: relative;
+        }
+        main {
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 5</header>
+    <main>
+        <button id="restoreBtn" onclick="restoreCircles()">Показать все круги</button>
+    </main>
+    <footer>
+        &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
+    </footer>
+</body>
+</html>
