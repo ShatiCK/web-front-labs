@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Шатравский Никита Дмитриевич. Дополнительное задание</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script>
+            let temps = [];
+            function randomTemps() {
+                for (let i = 0; i < 30; i++) {
+                    let tmin = Math.floor(Math.random() * 15) - 10;
+                    let tmax = tmin + Math.floor(Math.random() * 15) + 5;
+                    temps.push({min: tmin, max: tmax});
+                }
+            }
+            function drawChart() {
+                let ch = document.getElementById('chart');
+                ch.innerHTML = '';
+                for (let i = 0; i < temps.length; i++) {
+                    let barMin = document.createElement('div');
+                    barMin.className = 'bar min';
+                    barMin.style.height = (temps[i].min + 20) * 5 + 'px';
+                    barMin.dataset.day = i + 1;
+                    let spMin = document.createElement('span');
+                    spMin.innerText = temps[i].min + '°';
+                    barMin.appendChild(spMin);
+
+                    let barMax = document.createElement('div');
+                    barMax.className = 'bar';
+                    barMax.style.height = (temps[i].max + 20) * 5 + 'px';
+                    barMax.dataset.day = i + 1;
+                    let spMax = document.createElement('span');
+                    spMax.innerText = temps[i].max + '°';
+                    barMax.appendChild(spMax);
+
+                    ch.appendChild(barMin);
+                    ch.appendChild(barMax);
+                }
+            }
+            function chooseDay() {
+                let d = document.getElementById('day').value;
+                let inf = document.getElementById('info');
+                let allBars = document.querySelectorAll('.bar');
+                allBars.forEach(function(bar) {
+                    bar.classList.remove('highlight');
+                });
+                if (d >= 1 && d <= 30) {
+                    allBars.forEach(function(bar) {
+                        if (bar.dataset.day == d) {
+                            bar.classList.add('highlight');
+                        }
+                    });
+                    inf.innerText = "День " + d + ": мин " + temps[d-1].min + "°, макс " + temps[d-1].max + "°";
+                } else {
+                    inf.innerText = "Введите день от 1 до 30";
+                }
+            }
+            window.onload = function() {
+                randomTemps();
+                drawChart();
+            };
+        </script>
+        <style>
+            #title {
+                text-align: center;
+                font-size: 24px;
+                margin-top: 20px;
+                font-weight: bold;
+            }
+            #chart {
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                background: green;
+                padding: 20px;
+                gap: 5px;
+                height: 300px;
+                margin: 20px auto;
+                width: 85%;
+                border: 3px solid black;
+                border-radius: 15px;
+            }
+            .bar {
+                width: 10px;
+                background: blue;
+                position: relative;
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                font-size: 10px;
+                color: white;
+            }
+            .min {
+                background: lightblue;
+            }
+            .highlight {
+                background: orange !important;
+            }
+            .bar span {
+                position: absolute;
+                bottom: 100%;
+                font-size: 9px;
+            }
+            #controls {
+                text-align: center;
+                margin-top: 20px;
+            }
+            #info {
+                margin-top: 10px;
+                font-weight: bold;
+            }
+    </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 6
+        </header>
+        
+        <main>
+            <div id="title">Температура за месяц</div>
+            <div id="chart"></div>
+
+            <div id="controls">
+                <input type="number" id="day" placeholder="День" min="1" max="30">
+                <button onclick="chooseDay()">Выбрать день</button>
+                <div id="info"></div>
+            </div>
+        </main>
+
+        <footer>
+            &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
+        </footer>
+    </body>
+</html>
