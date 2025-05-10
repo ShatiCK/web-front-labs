@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Шатравский Никита Дмитриевич. Таблица умножения</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script>
+            function showMutipleTable(number = 7, start = 1, end = 10) {
+                number = Math.min(100, Math.max(-100, parseInt(number) || 7));
+                start = Math.min(100, Math.max(-100, parseInt(start) || 1));
+                end = Math.min(100, Math.max(-100, parseInt(end) || 10));
+                
+                if (start > end) {
+                    [start, end] = [end, start];
+                    document.getElementById('start').value = start;
+                    document.getElementById('end').value = end;
+                }
+
+                let tbl = document.getElementById('mtable');
+                tbl.innerHTML = `<h1 class="mtable-title">Таблица умножения на ${number}</h1>`;
+
+                for (let i = start; i <= end; i++) {
+                    let s = `<div class="mtable-row">
+                                <span>${i} × ${number}</span>
+                                <span>=</span>
+                                <span>${i * number}</span>
+                              </div>`;
+                    tbl.innerHTML += s;
+                }
+            }
+            
+            function updateTable() {
+                let number = document.getElementById('number').value;
+                let start = document.getElementById('start').value;
+                let end = document.getElementById('end').value;
+                
+                showMutipleTable(number, start, end); 
+            }
+        </script>
+        <style>
+            .mtable-container {
+                max-width: 600px;
+                margin: 20px auto 0;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+            .mtable-title {
+                text-align: center;
+                color: #2c3e50;
+                margin-bottom: 20px;
+                font-size: 24px;
+            }
+            .mtable-row {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 15px;
+                margin: 5px 0;
+                background-color: white;
+                border-radius: 5px;
+                box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+                transition: transform 0.2s;
+            }
+            .mtable-row:hover {
+                transform: scale(1.02);
+                background-color: #f0f8ff;
+            }
+            .mtable-row:nth-child(even) {
+                background-color: #f5f5f5;
+            }
+            .mtable-row:nth-child(even):hover {
+                background-color: #e6f7ff;
+            }
+            .controls {
+                max-width: 600px;
+                margin: 20px auto;
+                padding: 15px;
+                background-color: #f0f0f0;
+                border-radius: 8px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
+            .control-group {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+            input {
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                width: 60px;
+            }
+            button {
+                padding: 8px 15px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <body onload="showMutipleTable()">
+        <header>
+            НГТУ, ФБ, Лабораторная работа 6
+        </header>
+        
+        <main>
+            <div class="mtable-container" id="mtable"></div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="number">Число:</label>
+                    <input type="number" id="number" value="7" min="-100" max="100">
+                </div>
+                <div class="control-group">
+                    <label for="start">От:</label>
+                    <input type="number" id="start" value="1" min="-100" max="100">
+                </div>
+                <div class="control-group">
+                    <label for="end">До:</label>
+                    <input type="number" id="end" value="10" min="-100" max="100">
+                </div>
+                <button onclick="updateTable()">Обновить таблицу</button>
+            </div>
+        </main>
+
+        <footer>
+            &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
+        </footer>
+    </body>
+</html>
