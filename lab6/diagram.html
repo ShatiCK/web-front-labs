@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Шатравский Никита Дмитриевич. Диаграмма</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="icon" href="../dog.jpg">
+        <script>
+            function showDiagram() {
+                let data = [36, 86, 55, 28, 92, 60, 41, 17, 9, 43];
+                let colors = ['#FF5252', '#4CAF50', '#2196F3', '#9C27B0', 
+                            '#FFC107', '#607D8B', '#795548', '#E91E63', 
+                            '#3F51B5', '#009688'];
+                let bars = document.getElementsByClassName('bar');
+                const diag = document.getElementById('diag');
+                const diagStyle = getComputedStyle(diag);
+                const padding = parseFloat(diagStyle.paddingTop) + parseFloat(diagStyle.paddingBottom);
+                const diagHeight = diag.clientHeight - padding;
+                const maxData = Math.max(...data);
+                const k = diagHeight / maxData * 0.9;
+                for(let i = 0; i < data.length; i++) {
+                    const height = k * data[i];
+                    bars[i].style.height = height + 'px';
+                    bars[i].style.backgroundColor = colors[i % colors.length];
+                    bars[i].innerHTML = `<div class="value">${data[i]}</div>`;
+                }
+            }
+        </script>
+        <style>
+            #diag {
+                display: flex;
+                align-items: flex-end;
+                height: 330px;
+                gap: 15px;          
+                padding: 25px;
+                margin: 30px auto;
+                max-width: 500px;
+                background: black;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+            }
+            .bar {
+                width: 40px;
+                transition: height 0.4s ease;
+                box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+                border-radius: 4px 4px 0 0;
+                display: flex;
+                justify-content: center;
+                position: relative;
+            }
+
+            .value {
+                color: white;
+                font-weight: bold;
+                position: absolute;
+                top: -25px;
+            }
+        </style>
+    </head>
+    <body onload="showDiagram()">
+        <header>НГТУ, ФБ, Лабораторная работа 6</header>
+        
+        <main>
+            <div id="diag">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </main>
+
+        <footer>
+            &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
+        </footer>
+    </body>
+</html>
