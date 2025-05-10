@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Шатравский Никита Дмитриевич. Список книг</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script src="books.js"></script>
+        <script>
+        function showBooks() {
+            const bookList = document.getElementById('bookList');
+            bookList.innerHTML = '';
+            
+            for(let i = 0; i < books.length; i++) {
+                const book = books[i];
+                const classes = [
+                    'book-item',
+                    book.bestseller ? 'bestseller' : '',
+                    !book.inStock ? 'out-of-stock' : ''
+                ].join(' ');
+
+                bookList.innerHTML += `
+                    <div class="${classes}">
+                        <div class="book-header">
+                            <span class="book-author">${book.author}</span>
+                            <span class="book-year">${book.publicationYear}</span>
+                        </div>
+                        <h3 class="book-title">${book.name}</h3>
+                        <div class="book-footer">
+                            <span class="price">${book.price} ₽</span>
+                            ${book.bestseller ? 
+                                '<span class="bestseller-badge">Бестселлер</span>' : ''}
+                            ${!book.inStock ? 
+                                '<span class="stock-badge">Нет в наличии</span>' : ''}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        </script>
+        <style>
+            h1 {
+                text-align: center;
+                color: #2c3e50;
+                margin: 30px 0;
+                font-size: 2.2em;
+                font-weight: 300;
+                letter-spacing: 1px;
+            }
+            
+            #bookList {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                gap: 20px;
+            }
+            
+            .book-item {
+                background: white;
+                padding: 25px;
+                border-radius: 12px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+                transition: transform 0.3s, box-shadow 0.3s;
+                display: flex;
+                flex-direction: column;
+                border-top: 4px solid #e74c3c;
+            }
+            
+            .book-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            .book-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                font-size: 0.9em;
+                color: #7f8c8d;
+            }
+            
+            .book-title {
+                color: #2c3e50;
+                margin: 0 0 15px 0;
+                font-size: 1.3em;
+                font-weight: 500;
+                flex-grow: 1;
+            }
+            
+            .book-footer {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: auto;
+            }
+            
+            .price {
+                color: #27ae60;
+                font-weight: bold;
+                font-size: 1.1em;
+            }
+            
+            .bestseller {
+                border-top-color: #f39c12;
+            }
+            
+            .bestseller-badge {
+                background-color: #f39c12;
+                color: white;
+                padding: 4px 10px;
+                border-radius: 12px;
+                font-size: 0.8em;
+                font-weight: 500;
+            }
+            
+            .out-of-stock {
+                opacity: 0.8;
+                position: relative;
+            }
+            
+            .stock-badge {
+                background-color: #e74c3c;
+                color: white;
+                padding: 4px 10px;
+                border-radius: 12px;
+                font-size: 0.8em;
+                font-weight: 500;
+            }
+        </style>
+    </head>
+    <body onload="showBooks()">
+        <header>
+            НГТУ, ФБ, Лабораторная работа 6
+        </header>
+        
+        <main>
+            <h1>Список книг</h1>
+            <div id="bookList"></div>
+        </main>
+
+        <footer>
+            &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
+        </footer>
+    </body>
+</html>
