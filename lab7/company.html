@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Шатравский Никита Дмитриевич. Котировки акций компании ЕвроМедЦентр</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script src="company.js"></script>
+        <script>
+            function showStock() {
+                const table = document.createElement('table');
+                table.border = "1";
+                table.style.borderCollapse = "collapse";
+                const header = table.insertRow();
+                header.insertCell().innerText = "Дата";
+                header.insertCell().innerText = "Цена акций, руб";
+                header.insertCell().innerText = "Разница";
+                for (let i = 0; i < data.length; i++) {
+                    const row = table.insertRow();
+                    row.insertCell().innerText = data[i];
+                    row.insertCell().innerText = price[i];
+
+                    let diffCell = row.insertCell();
+                    if (i === 0) {
+                        diffCell.innerText = "—";
+                    } else {
+                        let diff = (price[i] - price[i - 1]).toFixed(2);
+                        diffCell.innerText = diff;
+                        if (diff > 0) {
+                            diffCell.style.color = "green";
+                        } else if (diff < 0) {
+                            diffCell.style.color = "red";
+                        } else {
+                            diffCell.style.color = "black";
+                        }
+                    }
+                }
+                document.getElementById('table-container').appendChild(table);
+                const avg = (price.reduce((a, b) => a + b) / price.length).toFixed(2);
+                const max = Math.max(...price).toFixed(2);
+                const min = Math.min(...price).toFixed(2);
+
+                const info = document.createElement('div');
+                info.innerHTML = `
+                    <p>Средняя цена: <strong>${avg}</strong></p>
+                    <p>Максимальная цена: <strong>${max}</strong></p>
+                    <p>Минимальная цена: <strong>${min}</strong></p>
+                `;
+                document.getElementById('table-container').appendChild(info);
+                document.getElementById('stock-button').style.display = 'none';
+            }
+        </script>
+    </head>
+    <body>
+        <header>НГТУ, ФБ, Лабораторная работа 7</header>
+        
+        <main>
+            <button id="stock-button" onclick="showStock()">Курс акций ЕвроМедЦентр</button>
+            <div id="table-container" style="margin-top: 20px;"></div>
+        </main>
+
+        <footer>
+            &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
+        </footer>
+    </body>
+</html>
