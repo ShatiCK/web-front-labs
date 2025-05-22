@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Шатравский Никита Дмитриевич. Добавление блоков</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script>
+            function addNewBlock() {
+                let newBlock = document.createElement('div');
+                newBlock.style.backgroundColor = '#3498db'; 
+                newBlock.style.height = '60px';
+                newBlock.style.width = '350px';
+                newBlock.style.border = '1px solid #2c3e50';
+                newBlock.style.margin = '12px auto';
+                newBlock.style.padding = '10px';
+                newBlock.style.boxSizing = 'border-box';
+                newBlock.style.borderRadius = '10px';
+                newBlock.style.boxShadow = '2px 2px 10px rgba(0, 0, 0, 0.2)';
+                newBlock.style.color = 'white';
+                newBlock.style.fontFamily = 'Arial, sans-serif';
+                newBlock.innerText = 'Новый блок';
+
+                document.querySelector('main').appendChild(newBlock);
+            }
+        </script>
+
+    </head>
+    <body>
+        <header>НГТУ, ФБ, Лабораторная работа 7</header>
+
+        <main>
+            <button onclick="addNewBlock()">Добавить блок</button>
+        </main>
+
+        <footer>
+            &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
+        </footer>
+    </body>
+</html>
