@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Шатравский Никита Дмитриевич. Погода</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="icon" href="../favicon-32x32.png">
+        <style>
+            .weather-block {
+                border: 1px solid #aaa;
+                padding: 20px;
+                width: 350px;
+                margin-top: 25px;
+                background: linear-gradient(to bottom right, #e0f7ff, #d0eaff);
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+                color: #222;
+            }
+
+            .weather-block h3 {
+                margin-top: 0;
+                font-size: 20px;
+                color: #2c3e50;
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 5px;
+                margin-bottom: 15px;
+            }
+        </style>
+        <script>
+            function formatDate(dateStr) {
+                const parts = dateStr.split('-');
+                return parts[2] + '.' + parts[1] + '.' + parts[0];
+            }
+
+            function getWeather() {
+                const url = 'https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok';
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        const hours = data.hourly.time;
+                        const temps = data.hourly.temperature_2m;
+
+                        const today = new Date().toISOString().slice(0, 10);
+                        const formattedDate = formatDate(today);
+
+                        const timesToFind = [`${today}T08:00`, `${today}T12:00`, `${today}T20:00`];
+                        let result = '';
+
+                        for (let i = 0; i < timesToFind.length; i++) {
+                            let index = hours.indexOf(timesToFind[i]);
+                            if (index !== -1) {
+                                result += `<p>${timesToFind[i].slice(11, 16)} — ${temps[index]} °C</p>`;
+                            } else {
+                                result += `<p>${timesToFind[i].slice(11, 16)} — нет данных</p>`;
+                            }
+                        }
+
+                        document.getElementById('weather-info').innerHTML = `
+                            <div class="weather-block">
+                                <h3>Погода в Новосибирске на ${formattedDate}</h3>
+                                ${result}
+                                <p><small>Источник: <a href="https://open-meteo.com/" target="_blank">open-meteo.com</a></small></p>
+                            </div>
+                        `;
+                    })
+                    .catch(error => {
+                        document.getElementById('weather-info').innerHTML = '<p style="color:red;">Ошибка загрузки погоды</p>';
+                    });
+            }
+        </script>
+    </head>
+    <body>
+        <header>НГТУ, ФБ, Лабораторная работа 7</header>
+
+        <main>
+            <button onclick="getWeather()">Показать погоду в Новосибирске</button>
+            <div id="weather-info"></div>
+        </main>
+
+        <footer>
+            &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
+        </footer>
+    </body>
+</html>
