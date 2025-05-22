@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Шатравский Никита Дмитриевич. Дополнительное задание</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const url = "https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m,relative_humidity_2m&current_weather=true&timezone=Asia%2FBangkok";
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const hoursToShow = 24;
+                    const time = data.hourly.time.slice(0, hoursToShow);
+                    const temp = data.hourly.temperature_2m.slice(0, hoursToShow);
+                    const humidity = data.hourly.relative_humidity_2m.slice(0, hoursToShow);
+
+                    const currentHour = new Date(data.current_weather.time).getHours();
+                    const currentTemp = data.current_weather.temperature;
+                    const currentHumidity = humidity[currentHour];
+
+                    document.getElementById('current-values').innerHTML =
+                        `<p><strong>Текущая температура:</strong> ${currentTemp} °C</p>` +
+                        `<p><strong>Текущая влажность:</strong> ${currentHumidity}%</p>`;
+
+                    const ctx = document.getElementById('weatherChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: time.map(t => t.replace('T', '\n')),
+                            datasets: [
+                                {
+                                    label: 'Температура (°C)',
+                                    data: temp,
+                                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                                    yAxisID: 'y'
+                                },
+                                {
+                                    label: 'Влажность (%)',
+                                    data: humidity,
+                                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                                    yAxisID: 'y1'
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Прогноз температуры и влажности за 24 часа'
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Температура (°C)'
+                                    }
+                                },
+                                y1: {
+                                    beginAtZero: true,
+                                    position: 'right',
+                                    grid: {
+                                        drawOnChartArea: false
+                                    },
+                                    title: {
+                                        display: true,
+                                        text: 'Влажность (%)'
+                                    }
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => {
+                    document.getElementById('current-values').innerText = 'Ошибка загрузки данных: ' + error;
+                });
+        </script>
+        <style>
+            body {
+                background-color: #f3f3f3;
+                font-family: Arial, sans-serif;
+            }
+            .chart-container {
+                width: 90%;
+                max-width: 1000px;
+                margin: 20px auto;
+                background-color: white;
+                padding: 20px;
+                border-radius: 15px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+            #current-values {
+                text-align: center;
+                font-size: 1.2em;
+                margin: 20px auto;
+                padding: 10px;
+                background-color: white;
+                max-width: 800px;
+                border-radius: 10px;
+                box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            }
+            
+        </style>
+    </head>
+    <body>
+        <header>НГТУ, ФБ, Лабораторная работа 7</header>
+
+        <main>
+            <div id="current-values">Загрузка текущей погоды...</div>
+            <div class="chart-container">
+                <canvas id="weatherChart"></canvas>
+            </div>
+        </main>
+
+        <footer>
+            &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
+        </footer>
+    </body>
+</html>
