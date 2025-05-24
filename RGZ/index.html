@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О компании ГАЗКОН</title>
+  <link rel="icon" type="image/jpeg" href="icon.jpg">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+
+    header {
+      background: url('logo.jpg') center/cover no-repeat;
+      height: 160px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border-radius: 0 0 10px 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+    }
+
+    .active {
+      color: #222;
+      background: #fff;
+      border-radius: 5px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      color: #f90;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 20px 0;
+    }
+
+    .scroll-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #f90;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header></header>
+
+  <nav>
+    <a class="active" href="index.html">О компании</a>
+    <a href="news.html">Новости</a>
+    <a href="currency.html">Курс валют</a>
+    <a href="contacts.html">Контакты</a>
+    <a href="video.html">Видео</a>
+  </nav>
+
+  <div class="container">
+    <h2>Общая информация</h2>
+    <p><strong>Полное наименование:</strong> Публичное акционерное общество «ГАЗКОН»</p>
+    <p><strong>Место нахождения:</strong> г. Москва</p>
+    <p><strong>Дата регистрации:</strong> <u>28.09.2004</u></p>
+    <p><strong>ИНН:</strong> <em>7726510579</em></p>
+    <p><strong>Генеральный директор:</strong> <b>Кочетков Герман Геннадьевич</b></p>
+    <p><strong>Телефон:</strong> <a href="tel:+74952801057">+7 (495) 280-10-57</a></p>
+    <p><strong>Веб-сайт:</strong> <a href="https://www.gazcon.ru" target="_blank">www.gazcon.ru</a></p>
+
+    <h2>О компании</h2>
+    <p>Компания ГАЗКОН специализируется на поставке и внедрении систем автоматизации для газовой отрасли. Мы обеспечиваем надёжные решения, разработанные с учётом актуальных стандартов и требований безопасности. Наши продукты используются на объектах стратегической инфраструктуры, и их стабильность проверена временем.</p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+      <img src="1.jpg" alt="Газовое оборудование 1" style="width: 300px;">
+      <img src="2.jpg" alt="Газовое оборудование 2" style="width: 300px;">
+      <img src="3.jpg" alt="Газовое оборудование 3" style="width: 300px;">
+    </div>
+
+    <p>С момента своего основания <strong>в 2004 году</strong>, компания стабильно развивается и расширяет направления деятельности. Мы сотрудничаем с ведущими предприятиями отрасли и предоставляем инновационные технологии в сфере учета и контроля расхода газа. Наши специалисты обладают высокой квалификацией, а подход к работе основан на надёжности, точности и технологичности.</p>
+
+    <h2>Этапы развития</h2>
+    <ul>
+      <li><b>2004:</b> регистрация компании и первые контракты с промышленными предприятиями</li>
+      <li><b>2008:</b> внедрение собственной системы коммерческого учета газа</li>
+      <li><b>2012:</b> участие в крупных проектах газораспределения в регионах</li>
+      <li><b>2020:</b> переход на цифровые решения и облачные сервисы</li>
+      <li><b>2023:</b> модернизация программного комплекса под стандарты ИИМ</li>
+    </ul>
+
+    <h2>Наши партнёры</h2>
+    <p>Среди наших клиентов – предприятия ЖКХ, энергетики, а также крупные газораспределительные компании. Мы ценим доверие партнёров и гарантируем индивидуальный подход к каждому проекту.</p>
+    
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+      <img src="4.jpg" alt="Партнер 1" style="width: 300px;">
+      <img src="5.jpg" alt="Партнер 2" style="width: 300px;">
+      <img src="6.jpg" alt="Партнер 3" style="width: 300px;">
+    </div>
+
+    <h2>Наша миссия</h2>
+    <p><em>Обеспечивать надёжные, инновационные и точные решения в области газового учёта и автоматизации процессов.</em></p>
+
+    <p>Дополнительную информацию можно найти на официальной странице компании: <a href="https://gazcon.ru/index.html" target="_blank">ПАО "ГАЗКОН"</a></p>
+  </div>
+
+  <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+</body>
+</html>

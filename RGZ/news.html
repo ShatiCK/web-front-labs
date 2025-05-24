@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Новости ГАЗКОН</title>
+  <link rel="icon" type="image/jpeg" href="icon.jpg">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+    header {
+      background: url('logo.jpg') center/cover no-repeat;
+      height: 160px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border-radius: 0 0 10px 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+    }
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+    }
+    .active {
+      color: #222;
+      background: #fff;
+      border-radius: 5px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .news-card {
+      border: 1px solid #f90;
+      background: white;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .news-card h3 {
+      margin-top: 0;
+    }
+    .news-card .date {
+      font-size: 0.9em;
+      color: #777;
+    }
+    .news-full {
+      display: none;
+      margin-top: 10px;
+    }
+    .show-button {
+      margin-top: 10px;
+      background-color: #f90;
+      border: none;
+      padding: 8px 12px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+      .scroll-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #f90;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function toggleFullText(id) {
+      const block = document.getElementById(id);
+      block.style.display = block.style.display === '' || block.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
+</head>
+<body>
+  <header></header>
+  <nav>
+    <a href="index.html">О компании</a>
+    <a class="active" href="news.html">Новости</a>
+    <a href="currency.html">Курс валют</a>
+    <a href="contacts.html">Контакты</a>
+    <a href="video.html">Видео</a>
+  </nav>
+  <div class="container">
+    <h2>Новости компании</h2>
+
+    
+    <div class="news-card">
+      <div class="date">15.05.2025</div>
+      <h3>ГАЗКОН внедрил новую систему диспетчеризации</h3>
+      <p>Компания завершила внедрение новой автоматизированной системы диспетчерского контроля...</p>
+      <button class="show-button" onclick="toggleFullText('news1')">Показать</button>
+      <div class="news-full" id="news1">
+        <p>Компания ГАЗКОН внедрила новую автоматизированную систему диспетчерского контроля и управления для предприятий газораспределения в Поволжье. Система обеспечивает оперативный контроль состояния объектов и передачу данных в режиме реального времени.</p>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <div class="date">10.05.2025</div>
+      <h3>Участие ГАЗКОН в форуме «Газ. Технологии. Безопасность»</h3>
+      <p>Компания представила инновационные решения в области учета газа и автоматизации...</p>
+      <button class="show-button" onclick="toggleFullText('news2')">Показать</button>
+      <div class="news-full" id="news2">
+        <p>На международном форуме «Газ. Технологии. Безопасность» компания ГАЗКОН представила ряд решений, включая модернизированные комплексы измерения и автоматизации объектов распределения газа.</p>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <div class="date">05.05.2025</div>
+      <h3>Обновление программного обеспечения ГАЗКОН 5.0</h3>
+      <p>Вышло обновление флагманского ПО для газоучётных систем с новыми функциями анализа...</p>
+      <button class="show-button" onclick="toggleFullText('news3')">Показать</button>
+      <div class="news-full" id="news3">
+        <p>Версия 5.0 включает интеграцию с облачными хранилищами, улучшенные алгоритмы диагностики и модуль визуализации на основе ИИ. Обновление доступно с 6 мая на официальном сайте.</p>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <div class="date">28.04.2025</div>
+      <h3>ГАЗКОН подписал соглашение с ПАО «МОСГАЗ»</h3>
+      <p>Новый этап стратегического сотрудничества с одним из ключевых операторов газового рынка...</p>
+      <button class="show-button" onclick="toggleFullText('news4')">Показать</button>
+      <div class="news-full" id="news4">
+        <p>Соглашение предусматривает внедрение систем ГАЗКОН на объектах ПАО «МОСГАЗ» в 2025–2026 гг., включая решение для удаленного мониторинга и аналитики аварийных ситуаций.</p>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <div class="date">20.04.2025</div>
+      <h3>ГАЗКОН автоматизировал систему учета в Тюмени</h3>
+      <p>Внедрение системы коммерческого учета газа завершено на объектах ЖКХ региона...</p>
+      <button class="show-button" onclick="toggleFullText('news5')">Показать</button>
+      <div class="news-full" id="news5">
+        <p>Комплексное внедрение системы учёта позволило сократить потери и повысить точность передачи данных в 4 муниципальных районах Тюменской области.</p>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <div class="date">12.04.2025</div>
+      <h3>ГАЗКОН открыл новый офис в Казани</h3>
+      <p>Новый региональный офис будет обеспечивать техническую поддержку и сервисное обслуживание...</p>
+      <button class="show-button" onclick="toggleFullText('news6')">Показать</button>
+      <div class="news-full" id="news6">
+        <p>Региональный центр в Казани позволит оперативно реагировать на запросы клиентов и расширить присутствие в Приволжском федеральном округе.</p>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <div class="date">01.04.2025</div>
+      <h3>ПАО «ГАЗКОН» отпраздновал 21-летие компании</h3>
+      <p>В рамках празднования прошли мероприятия в центральном офисе и филиалах компании...</p>
+      <button class="show-button" onclick="toggleFullText('news7')">Показать</button>
+      <div class="news-full" id="news7">
+        <p>Сотрудники и партнёры поздравили компанию с юбилеем. Генеральный директор отметил достижения и поблагодарил коллектив за преданность делу.</p>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <div class="date">22.03.2025</div>
+      <h3>ГАЗКОН провёл обучение для новых инженеров</h3>
+      <p>Курс повышения квалификации прошёл в учебном центре компании в Москве...</p>
+      <button class="show-button" onclick="toggleFullText('news8')">Показать</button>
+      <div class="news-full" id="news8">
+        <p>В программе были практические и теоретические занятия по обслуживанию газоучётного оборудования, систем SCADA и безопасности промышленных объектов.</p>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <div class="date">10.03.2025</div>
+      <h3>Участие в конкурсе «Лучшие решения для ЖКХ»</h3>
+      <p>Система учёта ГАЗКОН вошла в финал федерального отраслевого конкурса...</p>
+      <button class="show-button" onclick="toggleFullText('news9')">Показать</button>
+      <div class="news-full" id="news9">
+        <p>По итогам конкурса, программный комплекс «ГАЗКОН-Аналитик» получил высокую оценку экспертного совета за инновационный подход и интеграцию ИИ-моделей.</p>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <div class="date">01.03.2025</div>
+      <h3>Новые поставки оборудования в регионы</h3>
+      <p>Компания расширила поставки модулей учёта в Архангельскую и Волгоградскую области...</p>
+      <button class="show-button" onclick="toggleFullText('news10')">Показать</button>
+      <div class="news-full" id="news10">
+        <p>В первом квартале 2025 года было отгружено более 100 комплектов оборудования. Поставки осуществляются в рамках федеральной программы модернизации ЖКХ.</p>
+      </div>
+    </div>
+
+    <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+  </div>
+</body>
+</html>

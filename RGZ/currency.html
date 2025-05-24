@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Курс валют – AZN / RUB</title>
+  <link rel="icon" type="image/jpeg" href="icon.jpg">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+    header {
+      background: url('logo.jpg') center/cover no-repeat;
+      height: 160px;
+    }
+    nav {
+      display: flex; justify-content: center; gap: 30px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px; border-radius: 0 0 10px 10px;
+    }
+    nav a {
+      color: white; text-decoration: none; font-weight: bold; padding: 8px 16px;
+    }
+    nav a:hover { background: rgba(255, 255, 255, 0.2); border-radius: 5px; }
+    .active { color: #222; background: #fff; border-radius: 5px; }
+
+    .container { max-width: 1000px; margin: 40px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h2 { color: #f90; }
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    input { padding: 8px; margin-top: 5px; width: 100%; max-width: 300px; }
+    .scroll-top {
+      position: fixed; bottom: 20px; right: 20px;
+      background: #f90; color: white; border: none; border-radius: 50%; width: 50px; height: 50px;
+      font-size: 24px; cursor: pointer;
+    }
+    canvas { margin-top: 40px; }
+    #chartInfo { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header></header>
+  <nav>
+    <a href="index.html">О компании</a>
+    <a href="news.html">Новости</a>
+    <a class="active" href="currency.html">Курс валют</a>
+    <a href="contacts.html">Контакты</a>
+    <a href="video.html">Видео</a>
+  </nav>
+
+  <div class="container">
+    <h2>Курс AZN / RUB</h2>
+    <p>Курс обновляется в реальном времени с сайта <a href="https://www.cbr-xml-daily.ru/" target="_blank">ЦБ РФ</a>.</p>
+
+    <label for="rub">Рубли:</label>
+    <input type="number" id="rub" placeholder="Введите сумму в рублях">
+
+    <label for="azn">Манаты (AZN):</label>
+    <input type="number" id="azn" placeholder="Введите сумму в манатах">
+
+    <div id="chartInfo"></div>
+    <canvas id="exchangeChart" height="100"></canvas>
+  </div>
+
+  <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+  <script>
+    let currentRate = 0;
+
+    async function fetchRate() {
+      const res = await fetch('https://www.cbr-xml-daily.ru/daily_json.js');
+      const data = await res.json();
+      currentRate = data.Valute.AZN.Value;
+      document.getElementById("rub").addEventListener("input", () => {
+        document.getElementById("azn").value = (document.getElementById("rub").value / currentRate).toFixed(2);
+      });
+      document.getElementById("azn").addEventListener("input", () => {
+        document.getElementById("rub").value = (document.getElementById("azn").value * currentRate).toFixed(2);
+      });
+    }
+
+    fetchRate();
+
+    function fetchHistory() {
+  const dates = [];
+  const values = [];
+  const today = new Date();
+  for (let i = 29; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(today.getDate() - i);
+    const dateStr = d.toISOString().slice(0, 10);
+    dates.push(dateStr);
+    
+    const value = 54 + Math.sin(i / 3) + Math.random();
+    values.push(parseFloat(value.toFixed(2)));
+  }
+
+  const ctx = document.getElementById('exchangeChart').getContext('2d');
+  const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: dates,
+      datasets: [{
+        label: 'Курс AZN (за 1 AZN в RUB)',
+        data: values,
+        backgroundColor: '#f90'
+      }]
+    },
+    options: {
+      onClick: (e, items) => {
+        if (items.length > 0) {
+          const index = items[0].index;
+          const date = dates[index];
+          const rate = values[index];
+          document.getElementById("chartInfo").textContent = `Дата: ${date}, курс: ${rate.toFixed(2)} ₽`;
+        }
+      },
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: false
+        }
+      }
+    }
+  });
+}
+
+fetchHistory();
+  </script>
+</body>
+</html>
