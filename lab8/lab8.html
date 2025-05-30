@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Шатравский Никита Дмитриевич. Лабораторная 8</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="icon" href="../favicon-32x32.png">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 8
+        </header>
+        
+        <main>
+            <div id="app">
+                <h1 :title="messageRus">{{ message }}</h1>
+                <p>Счётчик: {{ counter }}</p>
+                <button @click="incCounter">++</button>
+                <button @click="decCounter">--</button>
+            </div>
+        </main>
+
+        <footer>
+            &copy; Никита Шатравский, ФБИ-33, 2 курс, 2025
+        </footer>
+        <script>
+            Vue.createApp({
+                data() {
+                    return {
+                        message: 'Hello',
+                        messageRus: 'Привет',
+                        counter: 1,  
+                    }
+                    
+                },
+                methods: {
+                    incCounter() {
+                        this.counter++;
+                    },
+                    decCounter() {
+                        this.counter--;
+                    }
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html>
