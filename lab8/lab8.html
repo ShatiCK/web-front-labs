@@ -24,6 +24,13 @@
                 <div>Возраст: {{ user.age }}</div>
                 <div>Телефон: {{ user.tel }}</div>
                 <hr>
+                <h2>Цветы</h2>
+                <ul>
+                    <li v-for="flower in flowers">
+                        {{ flower }}
+                    </li>
+                </ul>
+                <hr>
             </div>
         </main>
 
@@ -42,6 +49,7 @@
                             age: '18',
                             tel: '222-33-44'
                         },
+                        flowers: ['роза', 'тюльпан', 'маргарита', 'георгин', 'одуванчик'],
                     }
                     
                 },
